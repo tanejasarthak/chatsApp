@@ -9,6 +9,9 @@ import UIKit
 
 class ChatListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var receipentNameLbl: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,4 +23,9 @@ class ChatListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configureCell(model: ChatListingViewModel?) {
+        guard let model = model else { return }
+        receipentNameLbl.text = model.institutionName
+        addressLabel.text = model.talukName + " , " + model.cityName + " , " + model.stateName
+    }
 }
